@@ -12,7 +12,7 @@
 
         <!-- This element is to trick the browser into centering the modal contents. -->
 
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
 
 
         <div
@@ -26,6 +26,17 @@
                         <h1 class="font-bold text-center mb-4">CREATE POST</h1>
                     </div>
                     <div class="">
+                        <div class="mb-4">
+
+                            <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
+                            <select wire:model="category_id" class=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                @foreach ($categories as $key=>$category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('title') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
                         <div class="mb-4">
                             <input wire:model="postId" type="hidden">
                             <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use Livewire\Component;
 use App\Models\Post;
 use Livewire\WithPagination;
@@ -11,13 +12,14 @@ class Posts extends Component
     use WithPagination;
     public $search;
     public $isOpen = 0;
-    public $postId,$title,$description;
+    public $postId,$category_id,$title,$description;
 
     public function render()
     {
         $searchParams = '%'.$this->search.'%';
         return view('livewire.posts',[
-            'posts' => Post::where('title','like',$searchParams)->paginate(5)
+            'posts' => Post::where('title','like',$searchParams)->paginate(5),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -40,6 +42,7 @@ class Posts extends Component
             ]
         );
         Post::updateOrCreate(['id'=>$this->postId],[
+            'category_id' =>$this->category_id,
             'title' => $this->title,
             'description' => $this->description,
         ]);

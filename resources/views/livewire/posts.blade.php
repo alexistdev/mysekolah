@@ -60,6 +60,8 @@
 
                     <th class="px-4 py-2">Judul</th>
 
+                    <th class="px-4 py-2">Kategori</th>
+
                     <th class="px-4 py-2">Deskripsi</th>
 
                     <th class="px-4 py-2">Action</th>
@@ -76,6 +78,8 @@
                         <td class="border px-4 py-2">{{ $posts->firstItem() + $key }}</td>
 
                         <td class="border px-4 py-2">{{ $post->title }}</td>
+
+                        <td class="border px-4 py-2">{{ $post->category->name }}</td>
 
                         <td class="border px-4 py-2">{{ $post->description }}</td>
 
