@@ -4,17 +4,21 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Post;
+use Livewire\WithPagination;
 
 class Posts extends Component
 {
-    public $posts;
+    use WithPagination;
+    public $search;
     public $isOpen = 0;
     public $postId,$title,$description;
 
     public function render()
     {
-        $this->posts = Post::all();
-        return view('livewire.posts');
+        $searchParams = '%'.$this->search.'%';
+        return view('livewire.posts',[
+            'posts' => Post::where('title','like',$searchParams)->paginate(5)
+        ]);
     }
 
     public function showModal()

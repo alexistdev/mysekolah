@@ -32,8 +32,17 @@
                         </div>
                     </div>
                 @endif
+                <div class="flex">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                        <button wire:click="showModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded my-3">Buat Post</button>
+                    </div>
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <input wire:model="search" type="text"
+                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                           placeholder="Search ..">
+                    </div>
+                </div>
 
-            <button wire:click="showModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Buat Post</button>
 
             @if($isOpen)
 
@@ -61,11 +70,10 @@
 
                 <tbody>
 
-                @foreach($posts as $post)
+                @foreach($posts as $key => $post)
 
                     <tr>
-
-                        <td class="border px-4 py-2">{{ $post->id }}</td>
+                        <td class="border px-4 py-2">{{ $posts->firstItem() + $key }}</td>
 
                         <td class="border px-4 py-2">{{ $post->title }}</td>
 
@@ -86,7 +94,9 @@
                 </tbody>
 
             </table>
-
+                <div class="mt-2 mb-5">
+                    {{$posts->links()}}
+                </div>
         </div>
 
     </div>
