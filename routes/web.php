@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Posts;
-use App\Http\Livewire\Categories;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +16,3 @@ use App\Http\Livewire\Categories;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/posts', Posts::class);
-Route::get('/categories', Categories::class);
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
