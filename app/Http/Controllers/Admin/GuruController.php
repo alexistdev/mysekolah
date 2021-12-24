@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class GuruController extends Controller
 {
     /**
      * MySekolah v.1.0
@@ -30,10 +30,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard',array(
+        return view('admin.guru',array(
             'judul' => "Dashboard Administrator | MILISENSI v.1.0",
             'aktifTag' => "admin",
-            'tagSubMenu' => "dashboard",
+            'tagSubMenu' => "guru",
         ));
     }
 }

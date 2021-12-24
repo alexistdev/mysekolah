@@ -69,7 +69,7 @@
                 responsive : true,
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.user') }}",
+                ajax: "{{ route('admin.guru') }}",
                 columns: [
                     {
                         data: 'index',

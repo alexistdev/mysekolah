@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{DashboardController as DashAdmin};
+use App\Http\Controllers\Admin\{DashboardController as DashAdmin,GuruController as GuruAdmin};
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +25,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['web','auth','roles']],function() {
     Route::group(['roles' => 'admin'], function () {
         Route::get('/admin/dashboard', [DashAdmin::class,'index'])->name('admin.dashboard');
+        Route::get('/admin/guru', [GuruAdmin::class,'index'])->name('admin.guru');
     });
 });
 require __DIR__.'/auth.php';
